@@ -4,12 +4,12 @@ import cookieParser from "cookie-parser";
 import cors from "cors"
 const PORT = process.env.PORT || 5000
 dotenv.config();
-const app = express();
 import AuthRoutes from "./Routes/Auth.js";
 import messageRoutes from "./Routes/MessageRoutes.js"
 import userRoute from "./Routes/UserRoute.js"
 import ConnectToMongodb from "./db/ConnectToMongodb.js";
-
+import bodyParser from "body-parser";
+import { app, server } from "./socket/socket.js";
 app.use(
     cors({
     
@@ -19,6 +19,8 @@ app.use(
   );
 app.use(express.json());
 app.use(cookieParser());
+app.use(bodyParser.json());
+
 
 app.use("/api/auth",AuthRoutes);
 app.use("/api/messages",messageRoutes);
@@ -31,7 +33,7 @@ app.get("/test",(req,res)=>{
     res.json("running successfully")
 })
 
-app.listen(PORT,()=>{
+server.listen(PORT,()=>{
     ConnectToMongodb()
     console.log(`server running on ${PORT}`)
 })

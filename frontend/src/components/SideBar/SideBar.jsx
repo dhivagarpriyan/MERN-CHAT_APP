@@ -1,21 +1,16 @@
 import React from 'react'
-import SearchInput from './SearchInput';
-import Conversations from './Conversations'
-import LogOutButton from './LogOutButton';
+import Conversations from "./Conversations";
+import LogoutButton from "./LogOutButton";
+import SearchInput from "./SearchInput";
 
-
-const SideBar = () => {
-  return (
-    < div className='px-2 flex flex-col  border-r border-slate-500 '>
-        
-        <SearchInput/>
-        <div className='divider '/>
-        <Conversations />
-        <LogOutButton/>
-        
-        
-    </div>
-  )
-}
-
-export default SideBar
+const Sidebar = () => {
+	return (
+		<div className='border-r border-slate-500 p-4 flex flex-col'>
+			<SearchInput />
+			<div className='divider px-3'></div>
+			<Conversations />
+			<LogoutButton />
+		</div>
+	);
+};
+export default Sidebar;
